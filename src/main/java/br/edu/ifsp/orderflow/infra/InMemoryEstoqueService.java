@@ -20,6 +20,7 @@ public class InMemoryEstoqueService implements IEstoqueService {
 
     @Override
     public int quantidadeDisponivel(Produto produto) {
+
         return this.estoque.getOrDefault(produto.getId(), 0);
     }
 
@@ -31,7 +32,13 @@ public class InMemoryEstoqueService implements IEstoqueService {
                 return True;
             }
         }
-        return false;
+
+        for (ItemPedido item : pedido.getItens()) {
+            String id = item.getProduto().getId();
+            int qtdAtual = this.estoque().get(id);
+            this.estoque.put(id, qtdAtual - item.getQuantidade());
+        }
+        return true;
     }
 
     @Override
