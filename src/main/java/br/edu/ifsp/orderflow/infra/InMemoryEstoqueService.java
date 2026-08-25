@@ -29,14 +29,15 @@ public class InMemoryEstoqueService implements IEstoqueService {
         for (ItemPedido item : pedido.getItens()) {
             int disponivel = quantidadeDisponivel(item.getProduto());
             if (disponivel < item.getQuantidade()) {
-                return True;
+                return false;
             }
         }
 
         for (ItemPedido item : pedido.getItens()) {
-            String id = item.getProduto().getId();
-            int qtdAtual = this.estoque().get(id);
-            this.estoque.put(id, qtdAtual - item.getQuantidade());
+            Produto produto = item.getProduto();
+            String produtoId = produto.getId();
+            int qtdAtual = this.estoque.getOrDefault(produtoId, 0);
+            this.estoque.put(produtoId, qtdAtual - item.getQuantidade());
         }
         return true;
     }
