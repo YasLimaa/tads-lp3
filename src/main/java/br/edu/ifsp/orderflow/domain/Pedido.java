@@ -33,31 +33,41 @@ public class Pedido {
     }
 
     public void marcarComoPago() {
+
         this.status = EStatusPedido.PAGO;
     }
 
     public void cancelar() {
+
         this.status = EStatusPedido.CANCELADO;
     }
 
     public String getId() {
+
         return this.id;
     }
 
     public Cliente getCliente() {
+
         return this.cliente;
     }
 
     public EStatusPedido getStatus() {
+
         return this.status;
     }
 
     public List<ItemPedido> getItens() {
+
         return this.itens;
+    }
+
+    public String getIdCurto() {
+        return this.id.substring(0, 8);
     }
 
     @Override
     public String toString() {
-        return "Pedido[" + this.id + ", " + this.status + ", Total R$: " + this.calcularTotal() + "]";
+        return "Pedido[" + this.getIdCurto() + ", " + this.status + ", Total R$: " + this.calcularTotal() + "]";
     }
 }
