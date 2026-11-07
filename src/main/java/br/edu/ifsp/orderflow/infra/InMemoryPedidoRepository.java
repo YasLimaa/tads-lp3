@@ -28,6 +28,7 @@ public class InMemoryPedidoRepository implements IPedidoRepository {
 
     @Override
     public List<Pedido> findAll() {
+
         List<Pedido> todos = new ArrayList<>();
 
         for (Pedido item : this.pedidos.values()) {

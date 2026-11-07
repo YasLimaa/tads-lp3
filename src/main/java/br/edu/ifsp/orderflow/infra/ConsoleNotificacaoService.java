@@ -7,9 +7,11 @@ public class ConsoleNotificacaoService implements INotificacaoService {
 
     @Override
     public void notificar(Cliente cliente, String mensagem) {
+
         this.sleep(800);
 
-        System.out.print("[NOTIFICACAO] para " + cliente.getEmail() + ": " + mensagem
+        System.out.println(
+            "[NOTIFICACAO] para " + cliente.getEmail() + ": " + mensagem
         );
     }
 
