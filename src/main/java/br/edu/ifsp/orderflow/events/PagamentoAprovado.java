@@ -10,8 +10,7 @@ import java.time.Instant;
  * @param ocorridoEm
  */
 public record PagamentoAprovado(
-        String pedidoId,
-        String transacaoId,
-        Instant ocorridoEm
-) implements IDomainEvent {
-}
+    String pedidoId,
+    String transacaoId,
+    Instant ocorridoEm
+) implements IDomainEvent {}

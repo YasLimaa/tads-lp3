@@ -1,7 +1,7 @@
 package br.edu.ifsp.orderflow.domain;
 
-
 public class ResultadoPagamento {
+
     private final boolean aprovado;
     private final String idTransacao;
     private final String motivo;

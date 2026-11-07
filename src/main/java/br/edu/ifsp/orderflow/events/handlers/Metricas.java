@@ -1,6 +1,7 @@
 package br.edu.ifsp.orderflow.events.handlers;
 
 public class Metricas {
+
     private int qtdAprovado = 0;
     private int qtdReprovado = 0;
 
@@ -11,6 +12,7 @@ public class Metricas {
     public void incrementarQtdReprovado() {
         this.qtdReprovado++;
     }
+
     public int getQtdAprovado() {
         return qtdAprovado;
     }
@@ -18,9 +20,9 @@ public class Metricas {
     public int getQtdReprovado() {
         return qtdReprovado;
     }
-
+    
     public String resumo() {
-        return "Métricas: " + this.qtdAprovado + " aprovado(s), "
+        return "Métricas: "+ this.qtdAprovado + " aprovado(s), " 
                 + this.qtdReprovado + " recusado(s)";
     }
 }

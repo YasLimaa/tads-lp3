@@ -14,7 +14,7 @@ public interface IEventHandler<E extends IDomainEvent> {
     /**
      * Qual tipo de evento este handler trata/consome?
      *
-     * Necessário por causa do apagamento de tipo do Java (type erasure)
+     * Necessário por causa do apagamento de tipo do Java (type erasure).
      * @return
      */
     Class<E> eventType();

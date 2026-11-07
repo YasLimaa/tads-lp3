@@ -14,8 +14,8 @@ public class PagamentoRecusadoNotificacaoHandler implements IEventHandler<Pagame
     private final INotificacaoService notificacaoService;
 
     public PagamentoRecusadoNotificacaoHandler(
-            IPedidoRepository pedidoRepository,
-            INotificacaoService notificacaoService
+        IPedidoRepository pedidoRepository,
+        INotificacaoService notificacaoService
     ) {
         this.notificacaoService = notificacaoService;
         this.pedidoRepository = pedidoRepository;
@@ -23,14 +23,16 @@ public class PagamentoRecusadoNotificacaoHandler implements IEventHandler<Pagame
 
     @Override
     public void handle(PagamentoRecusado event) {
+
         Optional<Pedido> pedidoEncontrado = this.pedidoRepository.findById(event.pedidoId());
 
         if (pedidoEncontrado.isPresent()) {
+
             Pedido pedido = pedidoEncontrado.get();
 
             this.notificacaoService.notificar(
-                    pedido.getCliente(),
-                    "Pedido recusado (" + event.motivo() + "). Pedido "
+                pedido.getCliente(),
+                "Pedido recusado (" + event.motivo() + "). Pedido "
                     + pedido.getIdCurto() + " cancelado."
             );
         }

@@ -15,14 +15,13 @@ public class FakePagamentoGateway implements IPagamentoGateway {
     public ResultadoPagamento pagar(Pedido pedido) {
 
         this.sleep(1500);
+
         BigDecimal totalPedido = pedido.calcularTotal();
 
-        // compareTo:
-        //  - retorna 0 se os dois objetos (valores) são iguais
-        //  - retorna 1 se o elemento a esquerda é maior que o segundo
-        //  - retorna -1 do contrário
         if (totalPedido.compareTo(CARD_LIMIT) > 0) {
-            return ResultadoPagamento.recusado("limite do cartão excedido");
+            return ResultadoPagamento.recusado(
+                "limite do cartão excedido"
+            );
         }
 
         String idTransacao = UUID.randomUUID()
